@@ -112,7 +112,7 @@ a.active {
 }
 
 /* Hover-specific styles for devices that support hover */
-@media (hover: hover) {
+@media (pointer: fine) and (hover: hover) {
   .social-icon a:hover {
     transform: translateY(-4px);
     color: #b2f5ea;
@@ -135,7 +135,7 @@ a.active {
 }
 
 /* Touch screen-specific styles */
-@media (pointer: coarse) {
+@media (pointer: coarse) and (hover: none){
   .social-icon a::after {
     display: none;
   }
@@ -163,6 +163,7 @@ a.active {
   .service-section a::after {
     display: none;
   }
+  
 }
 
 
