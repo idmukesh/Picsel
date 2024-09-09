@@ -1,0 +1,485 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  /* Adjust this value to match the height of your navbar */
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: rgb(13 148 136);
+  /* Teal background color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* Optional shadow for visual effect */
+}
+
+.menu {
+  display: flex;
+  /* Ensure horizontal layout by default */
+  flex-direction: row;
+}
+
+.menu li {
+  list-style: none;
+}
+
+.menu a {
+  padding: 10px 20px;
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+}
+
+@media (max-width: 1024px) {
+  .menu a {
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  .menu {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(13 148 136);
+    /* Teal background color */
+    text-align: center;
+    padding-top: 20px;
+    flex-direction: column;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .menu.show {
+    left: 0;
+    /* Show menu when toggled */
+  }
+
+  #close-button {
+    display: none;
+    /* Hide close button on large screens */
+  }
+
+  #menu-toggle {
+    display: block;
+    /* Show menu toggle button on mobile */
+  }
+}
+
+.no-scroll {
+  overflow: hidden;
+  /* Disable scrolling */
+}
+
+a::after {
+  content: "";
+  display: block;
+  height: 2px;
+  /* Adjust thickness */
+  background: white;
+  /* Underline color */
+  transition: transform 0.3s ease;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+}
+
+a:hover::after,
+a.active::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+a.active {
+  font-weight: bold;
+  /* Optional: Make the active link bold */
+}
+
+/* Hover-specific styles for devices that support hover */
+@media (hover: hover) {
+  .social-icon a:hover {
+    transform: translateY(-4px);
+    color: #b2f5ea;
+  }
+
+  .more-btn:hover {
+    background-color: rgb(17 94 89);
+    color: white;
+  }
+
+  .client-card-content a:hover {
+    background-color: rgb(17 94 89);
+    color: white;
+  }
+
+  .service-section a:hover {
+    background-color: rgb(17 94 89);
+    color: white;
+  }
+}
+
+/* Touch screen-specific styles */
+@media (pointer: coarse) {
+  .social-icon a::after {
+    display: none;
+  }
+
+  .social-icon a {
+    /* Reset hover-related styles */
+    transform: none;
+    transition: none;
+    color: white;
+  }
+
+  .more-btn {
+    background-color: white;
+    color: rgb(13 148 136);
+  }
+
+  footer a::after {
+    display: none;
+  }
+
+  .client-card-content a::after {
+    display: none;
+  }
+
+  .service-section a::after {
+    display: none;
+  }
+}
+
+
+/* animations fade in and scale up */
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease-in-out;
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 1s ease-in-out;
+}
+
+.animate-slideInUp {
+  animation: slideInUp 1s ease-in-out;
+}
+
+.animate-scaleUp {
+  animation: scaleUp 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.95);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Team section styling */
+
+.team-section {
+  min-width: 300px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.team-member {
+  width: 100%;
+  font-size: 1em;
+  line-height: 1.75em;
+  border: none;
+  margin: 0;
+  padding: 30px;
+  counter-increment: section;
+  position: relative;
+  color: #34435e;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+}
+
+.team-member::before {
+  content: counter(section);
+  position: absolute;
+  border-radius: 50%;
+  height: 2.25em;
+  width: 2.25em;
+  background-color: #34435e;
+  text-align: center;
+  line-height: 2.25em;
+  color: #ffffff;
+  font-size: 1em;
+}
+
+.team-member:nth-child(odd) {
+  border-right: 3px solid;
+  padding-left: 0;
+  border-bottom: 3px solid;
+}
+
+.team-member:nth-child(odd)::before {
+  left: 100%;
+  margin-left: -16px;
+  top: 20%;
+}
+
+.team-member:nth-child(even) {
+  border-left: 3px solid;
+  padding-right: 0;
+  border-bottom: 3px solid;
+}
+
+.team-member:nth-child(even)::before {
+  right: 100%;
+  margin-right: -16px;
+  top: 20%;
+}
+
+.team-member:first-child {
+  border-top: 0;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.team-member:last-child {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.team-member p {
+  width: 50%;
+}
+
+.team-member__image-wrapper {
+  width: 50%;
+  padding: 0 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.team-member__image-wrapper img {
+  height: 150px;
+}
+
+.team-member__image-wrapper h1 {
+  margin: 10px 0 0;
+  font-size: 20px;
+  font-weight: 700;
+  width: 100%;
+}
+
+.team-member__image-wrapper p {
+  margin: 0;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .team-member {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .team-member__image-wrapper {
+    width: 100%;
+    padding: 0;
+    text-align: center;
+  }
+
+  .team-member p {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+/* Slider container styling */
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background-color: #f7fafc;
+}
+
+.slider-wrapper {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.card {
+  flex: 0 0 33.3333%;
+  /* Default to show 3 cards */
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.client-card-content {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.client-card-image {
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+  display: block;
+  transition: opacity 0.3s ease;
+  box-sizing: border-box;
+}
+
+.client-card-overlay {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  background: rgba(23, 173, 180, 0.7);
+  color: #ffffff;
+  text-align: center;
+  transition: bottom 0.3s ease;
+  padding: 10px;
+  border-radius: 0 0 8px 8px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Styles for devices that support hover */
+@media (hover: hover) {
+  .client-card-content:hover .client-card-overlay {
+    bottom: 0;
+    cursor: pointer;
+  }
+}
+
+.show-overlay {
+  bottom: 0;
+}
+
+.client-card-title {
+  margin: 0;
+  font-size: 1.2em;
+  color: #ffffff;
+}
+
+.slider-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #4f9a9a;
+  color: #ffffff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-size: 18px;
+}
+
+.slider-button:hover,
+.slider-button:active {
+  background-color: #1a8a8a;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex: 0 0 50%;
+    /* Show 2 cards at a time */
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    flex: 0 0 100%;
+    /* Show 1 card at a time */
+  }
+}
+
+/* form submit btn */
+@media (hover: hover) {
+  .form-submit-btn:hover {
+    background-color: rgb(17 94 89);
+  }
+
+}
