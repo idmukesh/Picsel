@@ -220,7 +220,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // team section overlay
 
+document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.client-card');
+
+    cards.forEach(card => {
+        card.addEventListener('click', toggleOverlay);
+    });
+});
+
 function toggleOverlay(event) {
     const overlay = event.currentTarget.querySelector('.client-card-overlay');
     overlay.classList.toggle('show-overlay');
-  }
+}

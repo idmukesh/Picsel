@@ -111,6 +111,26 @@ a.active {
   /* Optional: Make the active link bold */
 }
 
+.social-icon a:hover {
+  transform: translateY(-4px);
+  color: #b2f5ea;
+}
+
+.more-btn:hover {
+  background-color: rgb(17 94 89);
+  color: white;
+}
+
+.client-card-content a:hover {
+  background-color: rgb(17 94 89);
+  color: white;
+}
+
+.service-section a:hover {
+  background-color: rgb(17 94 89);
+  color: white;
+}
+
 /* Hover-specific styles for devices that support hover */
 @media (pointer: fine) and (hover: hover) {
   .social-icon a:hover {
